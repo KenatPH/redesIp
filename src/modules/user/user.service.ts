@@ -4,7 +4,8 @@ import { CreateUserDto } from 'src/dto/create-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
 import { User } from 'src/entities/user.entity';
 import { MailService } from 'src/mail/mail.service';
-import { ObjectId, Repository, MoreThan } from 'typeorm';
+import {  Repository, MoreThan, MoreThanOrEqual } from 'typeorm';
+import { ObjectId } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid'; // Para generar tokens únicos
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
@@ -108,6 +109,8 @@ export class UserService {
             // Retornar el usuario actualizado
             return this.findOne(response._id.toString());
         } catch (error) {
+            console.log(error);
+            
             throw new InternalServerErrorException('Ocurrió un error al actualizar el usuario', error.message);
         }
     }
@@ -140,22 +143,41 @@ export class UserService {
     }
 
     async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<void> {
+        // const user = await this.userRepository.findOne({
+        //     where: {
+        //         resetPasswordToken: resetPasswordDto.token,
+        //         resetPasswordExpires: MoreThanOrEqual(new Date()), // Verificar que el token no haya expirado
+        //     },
+        // });
+
+        // console.log('Current Date:', new Date());
+
+        // if (!user) {
+        //     throw new BadRequestException('Token inválido o ha expirado');
+        // }
+
         const user = await this.userRepository.findOne({
             where: {
                 resetPasswordToken: resetPasswordDto.token,
-                resetPasswordExpires:  MoreThan(new Date()) , // Verificar que el token no haya expirado
             },
         });
 
-        if (!user) {
+        const currentDate = new Date();
+        if (user && user.resetPasswordExpires > currentDate) {
+
+            // Encriptar la contraseña
+            const salt = await bcrypt.genSalt();
+            const hashedPassword = await bcrypt.hash(resetPasswordDto.password, salt);
+            user.password = hashedPassword;// Asegúrate de hashear la contraseña
+            user.resetPasswordToken = null;
+            user.resetPasswordExpires = null;
+
+            await this.userRepository.save(user);
+        } else {
             throw new BadRequestException('Token inválido o ha expirado');
         }
 
-        user.password = resetPasswordDto.password; // Asegúrate de hashear la contraseña
-        user.resetPasswordToken = null;
-        user.resetPasswordExpires = null;
 
-        await this.userRepository.save(user);
     }
 
     async findByConfirmationToken(token: string): Promise<User> {

@@ -5,6 +5,10 @@ import { AuthModule } from './modules/auth/auth.module';
 import { RoleModule } from './modules/role/role.module';
 import { MailService } from './mail/mail.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ProductModule } from './modules/product/product.module';
+import { WarehouseModule } from './modules/warehouse/warehouse.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { FavoriteProductModule } from './modules/favorite-product/favorite-product.module';
 
 
 @Module({
@@ -33,6 +37,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     UserModule,
     RoleModule,
     AuthModule,
+    ProductModule,
+    WarehouseModule,
+    CategoriesModule,
+    FavoriteProductModule
   ],
   providers: [MailService],
 })

@@ -1,5 +1,6 @@
 import { IsEmail, IsInt, IsString } from 'class-validator';
-import { Entity, Column, ObjectIdColumn, ObjectId } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, ObjectId, OneToMany } from 'typeorm';
+import { FavoriteProduct } from './FavoriteProduct.entity';
 
 @Entity('users')
 export class User {
@@ -58,4 +59,5 @@ export class User {
 
   @Column()
   updatedAt: Date;
+
 }

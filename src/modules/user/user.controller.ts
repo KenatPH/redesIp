@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Patch, Post, Put, UseGuards } from '@nest
 import { UserService } from './user.service';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('user')
@@ -22,6 +22,7 @@ export class UserController {
         return this.userService.create(createUserDto);
     }
     
+    @ApiBearerAuth() 
     @ApiOperation({ summary: 'Actualizar los usuario' })
     @UseGuards(JwtAuthGuard) 
     @Patch(':id')

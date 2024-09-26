@@ -42,8 +42,8 @@ export class AuthService {
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             // Aumentar el número de intentos si la contraseña es incorrecta
-            user.attempts += 1;
-            await this.userRepository.save(user);
+            // user.attempts += 1;
+            // await this.userRepository.save(user);
             throw new UnauthorizedException('Contraseña incorrecta');
         }
 
