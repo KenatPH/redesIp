@@ -1,5 +1,4 @@
 import { Entity, Column, ObjectIdColumn, ObjectId, ManyToOne } from 'typeorm';
-import { User } from './user.entity'; // Asegúrate de tener la entidad User
 
 @Entity('addresses')
 export class Address {
@@ -21,9 +20,8 @@ export class Address {
     @Column({ default: false })
     isDefault: boolean;
 
-    // Relación con el usuario
-    @ManyToOne(() => User, user => user.addresses)
-    user: User;
+    @Column()
+    userId: string; 
 }
 
 

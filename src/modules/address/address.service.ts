@@ -19,12 +19,15 @@ export class AddressService {
             throw new NotFoundException(`Usuario con ID ${userId} no encontrado`);
         }
 
-        const newAddress = this.addressRepository.create({ ...createAddressDto, user });
+        const newAddress = this.addressRepository.create({ 
+            ...createAddressDto, 
+            userId: user._id.toString()  // Convertimos el ObjectId a string
+        });
         return this.addressRepository.save(newAddress);
     }
 
     async getAddressesByUserId(userId: string): Promise<Address[]> {
-        return this.addressRepository.find({ where: { user: { _id: new ObjectId(userId) } } });
+        return this.addressRepository.find({ where: { userId: userId } }); // userId es string
     }
 
     async updateAddress(addressId: string, updateAddressDto: CreateAddressDto): Promise<Address> {
@@ -42,6 +45,6 @@ export class AddressService {
         if (!address) {
             throw new NotFoundException(`Dirección con ID ${addressId} no encontrada`);
         }
-        await this.addressRepository.delete(addressId);
+        await this.addressRepository.delete({ _id: new ObjectId(addressId) });  // Eliminación utilizando ObjectId
     }
 }

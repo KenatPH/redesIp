@@ -58,7 +58,7 @@ export class User {
   @Column()
   updatedAt: Date;
 
-  @OneToMany(() => Address, address => address.user, { cascade: true })
-  addresses: Address[];
+  @Column('array')
+  addresses: string[];
 
 }
