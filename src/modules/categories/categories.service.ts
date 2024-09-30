@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 
 import { CategoryDTO } from './dto/CategoryDTO';
 import { Category } from 'src/entities/category.entity';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class CategoryService {
@@ -32,7 +33,14 @@ export class CategoryService {
 
     // Obtener una categoría por su ID
     async findOne(id: string): Promise<Category> {
-        return await this.categoryRepository.findOne({ where: { id } });
+
+        const category = await this.categoryRepository.findOne({ where: { _id: new ObjectId(id) } });
+
+        if (!category) {
+            throw new NotFoundException('category not found');
+        }
+
+        return category
     }
 
 

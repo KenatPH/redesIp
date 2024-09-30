@@ -10,6 +10,22 @@ export class ProductController {
     constructor(private readonly productService: ProductService) { }
 
 
+
+    
+    @Get('/get/:id')
+    @ApiOperation({ summary: 'Obtener un producto por ID' })
+    async findOne(@Param('id') id: string): Promise<Product> {
+        return await this.productService.findOne(id);
+    }
+
+    @Get('most-searched')
+    @ApiOperation({ summary: 'Obtener los productos más buscados' })
+    @ApiQuery({ name: 'limit', required: false, description: 'Cantidad de productos a devolver', example: 10 })
+    async getMostSearched(@Query('limit') limit: number = 10) {
+        return await this.productService.getMostSearchedProducts(limit);
+    }
+
+
     @Get()
     @ApiOperation({ summary: 'Obtener todos los productos con paginación y filtrado' })
     @ApiQuery({
@@ -95,18 +111,6 @@ export class ProductController {
 
 
 
-    @Get(':id')
-    @ApiOperation({ summary: 'Obtener un producto por ID' })
-    async findOne(@Param('id') id: string): Promise<Product> {
-        return await this.productService.findOne(id);
-    }
-
-    @Get('most-searched')
-    @ApiOperation({ summary: 'Obtener los productos más buscados' })
-    @ApiQuery({ name: 'limit', required: false, description: 'Cantidad de productos a devolver', example: 10 })
-    async getMostSearched(@Query('limit') limit: number = 10) {
-        return await this.productService.getMostSearchedProducts(limit);
-    }
 
     // @Get('most-searched-by-warehouse')
     // @ApiOperation({ summary: 'Obtener los productos más buscados por almacén' })

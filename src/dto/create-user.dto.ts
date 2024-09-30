@@ -39,10 +39,6 @@ export class CreateUserDto {
 
     @IsOptional()
     @IsString()
-    direccion: string;
-
-    @IsOptional()
-    @IsString()
     image?: string;
 
     @ApiProperty({

@@ -1,6 +1,7 @@
 import { IsEmail, IsInt, IsString } from 'class-validator';
 import { Entity, Column, ObjectIdColumn, ObjectId, OneToMany } from 'typeorm';
 import { FavoriteProduct } from './FavoriteProduct.entity';
+import { Address } from './Address.entity';
 
 @Entity('users')
 export class User {
@@ -23,9 +24,6 @@ export class User {
 
   @Column()
   phoneNumber: string;
-
-  @Column()
-  direccion: string;
 
   @Column({ nullable: true })
   @IsString()
@@ -59,5 +57,8 @@ export class User {
 
   @Column()
   updatedAt: Date;
+
+  @OneToMany(() => Address, address => address.user, { cascade: true })
+  addresses: Address[];
 
 }

@@ -1,9 +1,9 @@
-import { Entity, Column, ObjectIdColumn } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, ObjectId } from 'typeorm';
 
 @Entity('Categories')
 export class Category {
     @ObjectIdColumn() // Usado para MongoDB
-    id: string;
+    _id: ObjectId;
 
     @Column()
     category: string;

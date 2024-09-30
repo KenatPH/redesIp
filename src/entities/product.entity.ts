@@ -1,11 +1,11 @@
-import { Entity, Column, ObjectIdColumn, OneToMany } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, OneToMany, ObjectId } from 'typeorm';
 import { Stock } from './stock.entity';
 import { FavoriteProduct } from './FavoriteProduct.entity';
 
 @Entity('products')
 export class Product {
     @ObjectIdColumn() // Usado para MongoDB
-    id: string;
+    _id: ObjectId;
 
     @Column()
     externalId: string;

@@ -22,7 +22,7 @@ export class FavoriteProductService {
     // Agregar producto favorito
     async addFavoriteProduct(userId: string, productId: string): Promise<FavoriteProduct> {
         const user = await this.userRepository.findOne({ where: { _id: new ObjectId(userId) } } );
-        const product = await this.productRepository.findOne({ where: { id: productId } });
+        const product = await this.productRepository.findOne({ where: { _id: new ObjectId(productId) } })
 
         if (!user || !product) {
             throw new NotFoundException('Usuario o Producto no encontrado');
@@ -34,7 +34,8 @@ export class FavoriteProductService {
         });
 
         if (existingFavorite) {
-            throw new Error('El producto ya está en favoritos');
+            // throw new Error('El producto ya está en favoritos');
+            throw new NotFoundException('El producto ya está en favoritos');
         }
 
         const favorite = this.favoriteProductRepository.create({
@@ -69,22 +70,33 @@ export class FavoriteProductService {
             take: limit,
         });
 
+        // console.log(favoriteProducts);
+        
+
         // Si no hay favoritos, devolvemos un array vacío
-        if (!favoriteProducts.length) {
+        if (favoriteProducts.length == 0) {
             return { products: [], total: 0 };
         }
 
         // 2. Extraemos los IDs de los productos favoritos
-        const productIds = favoriteProducts.map(favorite => favorite.productId);
+        const productIds = favoriteProducts.map(favorite =>  new ObjectId(favorite.productId) );
+
+        console.log(userId);
+        
 
         // 3. Contar el total de productos favoritos (sin paginación)
-        const total = await this.favoriteProductRepository.count({
+        const [fp, total] = await this.favoriteProductRepository.findAndCount({
             where: { userId: userId },
         });
 
+        console.log(total);
+        
+
         // 4. Ahora buscamos los productos por sus IDs
         const filter: any = {};
-        filter.id = { $in: productIds };
+        filter._id = { $in: productIds };
+        // console.log(filter);
+        
         const products = await this.productRepository.find({ where: filter});
 
         return { products, total };

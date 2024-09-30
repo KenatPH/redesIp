@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Warehouse } from 'src/entities/warehouse.entity';  // Asegúrate de ajustar la ruta
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class WarehouseService {
@@ -20,7 +21,15 @@ export class WarehouseService {
 
     // Obtener un almacén por su ID
     async findOne(id: string): Promise<Warehouse> {
-        return await this.warehouseRepository.findOne({ where: { id } });
+        // return await this.warehouseRepository.findOne({ where: { id } });
+
+        const warehouse = await this.warehouseRepository.findOne({ where: { _id: new ObjectId(id) } });
+
+        if (!warehouse) {
+            throw new NotFoundException('warehouse not found');
+        }
+
+        return warehouse
     }
 
 

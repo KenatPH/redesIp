@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
 import { User } from 'src/entities/user.entity';
-import { MailService } from 'src/mail/mail.service';
+import { MailService } from 'src/common/mail/mail.service';
 import {  Repository, MoreThan, MoreThanOrEqual } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid'; // Para generar tokens únicos
@@ -143,18 +143,7 @@ export class UserService {
     }
 
     async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<void> {
-        // const user = await this.userRepository.findOne({
-        //     where: {
-        //         resetPasswordToken: resetPasswordDto.token,
-        //         resetPasswordExpires: MoreThanOrEqual(new Date()), // Verificar que el token no haya expirado
-        //     },
-        // });
 
-        // console.log('Current Date:', new Date());
-
-        // if (!user) {
-        //     throw new BadRequestException('Token inválido o ha expirado');
-        // }
 
         const user = await this.userRepository.findOne({
             where: {
