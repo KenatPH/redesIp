@@ -1,7 +1,7 @@
 import { IsEmail, IsInt, IsString } from 'class-validator';
 import { Entity, Column, ObjectIdColumn, ObjectId, OneToMany } from 'typeorm';
 import { FavoriteProduct } from './FavoriteProduct.entity';
-import { Address } from './Address.entity';
+import { Address } from './address.entity';
 
 @Entity('users')
 export class User {
