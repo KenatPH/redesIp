@@ -1,3 +1,4 @@
+import { CartItem } from './cart-item.entity';
 import { Entity, Column, ObjectIdColumn, ObjectId } from 'typeorm';
 
 @Entity('Carts')
@@ -16,4 +17,6 @@ export class Cart {
 
     @Column()
     totalAmount: number;  // Precio total del carrito
+
+    cartItems:any[];
 }

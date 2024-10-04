@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Param, Body, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Delete, Patch } from '@nestjs/common';
 import { CartService } from './cart.service';
 import { AddItemToCartDto } from './dto/add-cartitem.dto';
-import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiTags, ApiResponse, ApiParam } from '@nestjs/swagger';
 
 @ApiTags('Carts')
 @Controller('carts')
@@ -62,5 +62,19 @@ export class CartController {
     })
     async removeItemFromCart(@Param('cartId') cartId: string, @Param('itemId') itemId: string) {
         return this.cartService.removeItemFromCart(cartId, itemId);
+    }
+
+
+    @Patch('/buy/:id')
+    @ApiOperation({ summary: 'procesar un carrito' })  // Descripción corta de la operación
+    @ApiParam({
+        name: 'id',
+        description: 'El ID del carrito que se va a procesar',
+        required: true,
+    })
+    @ApiResponse({ status: 200, description: 'Carrito procesado exitosamente.' })
+    @ApiResponse({ status: 404, description: 'Carrito no encontrado.' })
+    async checoutCart(@Param('id') cartId: string) {
+        return this.cartService.deactivateCart(cartId);
     }
 }

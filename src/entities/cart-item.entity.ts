@@ -1,4 +1,5 @@
 import { Entity, Column, ObjectIdColumn, ObjectId } from 'typeorm';
+import { Product } from './product.entity';
 
 @Entity('CartItems')
 export class CartItem {
@@ -10,6 +11,8 @@ export class CartItem {
 
     @Column()
     productId: string;  // Solo guardamos el ID del producto
+
+    product:Product;
 
     @Column()
     quantity: number;  // Cantidad de este producto en el carrito

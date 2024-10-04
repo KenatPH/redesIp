@@ -81,7 +81,7 @@ export class FavoriteProductService {
         // 2. Extraemos los IDs de los productos favoritos
         const productIds = favoriteProducts.map(favorite =>  new ObjectId(favorite.productId) );
 
-        console.log(userId);
+        // console.log(userId);
         
 
         // 3. Contar el total de productos favoritos (sin paginación)
@@ -89,7 +89,7 @@ export class FavoriteProductService {
             where: { userId: userId },
         });
 
-        console.log(total);
+        // console.log(total);
         
 
         // 4. Ahora buscamos los productos por sus IDs
