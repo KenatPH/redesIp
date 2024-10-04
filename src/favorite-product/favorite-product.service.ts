@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Product } from 'src/entities/Product.entity';
-import { User } from 'src/entities/User.entity'; // Asumo que tienes una entidad `User`
-import { FavoriteProduct } from 'src/entities/FavoriteProduct.entity';
+import { Product } from '../entities/Product.entity';
+import { User } from '../entities/User.entity'; // Asumo que tienes una entidad `User`
+import { FavoriteProduct } from '../entities/FavoriteProduct.entity';
  import { ObjectId } from 'mongodb';
 
 @Injectable()

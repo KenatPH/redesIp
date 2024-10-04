@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, NotFound
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
-import { User } from 'src/entities/User.entity';
+import { User } from '../entities/User.entity';
 import { MailService } from 'src/common/mail/mail.service';
 import {  Repository, MoreThan, MoreThanOrEqual } from 'typeorm';
 import { ObjectId } from 'mongodb';

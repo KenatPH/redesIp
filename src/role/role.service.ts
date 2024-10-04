@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateRoleDto } from 'src/dto/create-role.dto';
-import { Role  } from 'src/entities/role.entity';
+import { Role  } from '../entities/role.entity';
 import { Repository } from 'typeorm';
 import { ObjectId } from 'mongodb';
 

@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CartItem } from 'src/entities/Cart-item.entity';
-import { Cart } from 'src/entities/Cart.entity';
+import { CartItem } from '../entities/Cart-item.entity';
+import { Cart } from '../entities/Cart.entity';
 import { Repository } from 'typeorm';
 import { AddItemToCartDto } from './dto/add-cartitem.dto';
 import { ObjectId } from 'mongodb';
-import { Product } from 'src/entities/Product.entity';
+import { Product } from '../entities/Product.entity';
 
 @Injectable()
 export class CartService {
