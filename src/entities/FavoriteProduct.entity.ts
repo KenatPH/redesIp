@@ -1,6 +1,6 @@
 import { Entity, Column, ObjectIdColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { User } from './user.entity'; // Asegúrate de tener la entidad User
-import { Product } from './product.entity';
+import { User } from './User.entity'; // Asegúrate de tener la entidad User
+import { Product } from './Product.entity';
 
 @Entity('favorite_products')
 export class FavoriteProduct {

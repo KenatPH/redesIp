@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Warehouse } from 'src/entities/warehouse.entity';  // Asegúrate de ajustar la ruta
+import { Warehouse } from 'src/entities/Warehouse.entity';  // Asegúrate de ajustar la ruta
 import { ObjectId } from 'mongodb';
 
 @Injectable()

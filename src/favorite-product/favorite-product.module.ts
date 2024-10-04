@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FavoriteProduct } from 'src/entities/FavoriteProduct.entity';
-import { Product } from 'src/entities/product.entity';
-import { User } from 'src/entities/user.entity';
+import { Product } from 'src/entities/Product.entity';
+import { User } from 'src/entities/User.entity';
 import { FavoriteProductController } from './favorite-product.controller';
 import { FavoriteProductService } from './favorite-product.service';
 

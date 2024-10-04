@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { WarehouseController } from './warehouse.controller';
 import { WarehouseService } from './warehouse.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Warehouse } from 'src/entities/warehouse.entity';
+import { Warehouse } from 'src/entities/Warehouse.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Warehouse])], 

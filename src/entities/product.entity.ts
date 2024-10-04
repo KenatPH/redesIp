@@ -1,5 +1,5 @@
 import { Entity, Column, ObjectIdColumn, OneToMany, ObjectId } from 'typeorm';
-import { Stock } from './stock.entity';
+import { Stock } from './Stock.entity';
 import { FavoriteProduct } from './FavoriteProduct.entity';
 
 @Entity('products')

@@ -1,5 +1,5 @@
 import { Entity, Column, ObjectIdColumn, ObjectId } from 'typeorm';
-import { Product } from './product.entity';
+import { Product } from './Product.entity';
 
 @Entity('CartItems')
 export class CartItem {
