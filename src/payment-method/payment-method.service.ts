@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePaymentMethodDto } from './dto/create-payment-method.dto';
 import { ObjectId } from 'mongodb';
-import { PaymentMethod } from 'src/entities/PaymentMethod.entity';
-import { EncryptionService } from 'src/common/encryption/encryption.service';
+import { PaymentMethod } from '../entities/PaymentMethod.entity';
+import { EncryptionService } from '../common/encryption/encryption.service';
 
 @Injectable()
 export class PaymentMethodService {

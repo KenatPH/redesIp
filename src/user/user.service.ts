@@ -1,15 +1,15 @@
 import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUserDto } from 'src/dto/create-user.dto';
-import { UpdateUserDto } from 'src/dto/update-user.dto';
-import { User } from 'src/entities/User.entity';
-import { MailService } from 'src/common/mail/mail.service';
+import { CreateUserDto } from '../dto/create-user.dto';
+import { UpdateUserDto } from '../dto/update-user.dto';
+import { User } from '../entities/User.entity';
+import { MailService } from '../common/mail/mail.service';
 import {  Repository, MoreThan, MoreThanOrEqual } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid'; // Para generar tokens únicos
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { ForgotPasswordDto, ResetPasswordDto } from 'src/dto/manager-password.dto';
+import { ForgotPasswordDto, ResetPasswordDto } from '../dto/manager-password.dto';
 
 @Injectable()
 export class UserService {

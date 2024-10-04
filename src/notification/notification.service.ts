@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Notification } from 'src/entities/Notification.entity';
+import { Notification } from '../entities/Notification.entity';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { Repository } from 'typeorm';
 import { ObjectId } from 'mongodb';
