@@ -1,8 +1,8 @@
 import { Controller, Post, Delete, Param, Get, Query, UseGuards } from '@nestjs/common';
 import { FavoriteProductService } from './favorite-product.service';
 import { ApiTags, ApiOperation, ApiParam, ApiQuery, ApiBearerAuth } from '@nestjs/swagger';
-import { Product } from '../entities/Product.entity';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Product } from 'entities/Product.entity';
+import { JwtAuthGuard } from 'auth/jwt-auth.guard';
 
 @ApiTags('favorite-products')
 @Controller('favorite-products')

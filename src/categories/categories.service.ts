@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 
 
 import { CategoryDTO } from './dto/CategoryDTO';
-import { Category } from '../entities/category.entity';
+import { Category } from 'entities/category.entity';
 import { ObjectId } from 'mongodb';
 
 @Injectable()

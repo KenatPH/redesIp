@@ -1,3 +1,34 @@
+// {
+//   "compilerOptions": {
+//     "module": "commonjs",
+//     "target": "es2017",
+//     "lib": ["es6", "dom"],
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "noImplicitAny": false,
+//     "moduleResolution": "node",
+//     "resolveJsonModule": true,
+//     "outDir": "./dist",       // La carpeta de salida de los archivos compilados
+//     "rootDir": "./src",       // El directorio raíz de los archivos fuente
+//     "baseUrl": "./src",       // Establece la raíz para las rutas absolutas
+//     "paths": {
+//       "*": ["*"]              // Permite usar rutas absolutas desde 'src/'
+//     },
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true
+//   },
+//   "include": [
+//     "src/**/*"                // Incluye todos los archivos dentro de `src`
+//   ],
+//   "exclude": [
+//     "node_modules",           // Excluye `node_modules`
+//     "dist",                   // Excluye la carpeta de salida
+//     "test",                   // Excluye archivos de prueba si es necesario
+//     "**/*spec.ts"             // Excluye los archivos de prueba unitarios
+//   ]
+// }
+
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -6,12 +37,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "es2017",
     "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./src",
+    "outDir": "./dist",       // La carpeta de salida de los archivos compilados
+    "rootDir": "./src",       // El directorio raíz de los archivos fuente
+    "baseUrl": "./src",       // Establece la raíz para las rutas absolutas
     "paths": {
-      "*": ["*"]
+      "*": ["*"]              // Permite usar rutas absolutas desde 'src/'
     },
     "incremental": true,
     "skipLibCheck": true,
@@ -20,5 +52,15 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+
+  "include": [
+    "src/**/*"                // Incluye todos los archivos dentro de `src`
+  ],
+  "exclude": [
+    "node_modules",           // Excluye `node_modules`
+    "dist",                   // Excluye la carpeta de salida
+    "test",                   // Excluye archivos de prueba si es necesario
+    "**/*spec.ts"             // Excluye los archivos de prueba unitarios
+  ]
 }

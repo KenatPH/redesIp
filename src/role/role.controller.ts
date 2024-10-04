@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { RoleService } from './role.service';
-import { CreateRoleDto } from '../dto/create-role.dto';
+import { CreateRoleDto } from 'dto/create-role.dto';
 
 @ApiTags('roles')
 @Controller('role')
