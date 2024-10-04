@@ -43,7 +43,7 @@
     "rootDir": "./src",       // El directorio raíz de los archivos fuente
     "baseUrl": "./src",       // Establece la raíz para las rutas absolutas
     "paths": {
-      "*": ["*"]              // Permite usar rutas absolutas desde 'src/'
+      "entities/*": ["entities/*"]  // Define la ruta personalizada
     },
     "incremental": true,
     "skipLibCheck": true,
