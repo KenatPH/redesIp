@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { User } from 'src/entities/user.entity';
 import { ObjectId } from 'mongodb';
-import { Address } from 'src/entities/address.entity';
+import { Address } from 'src/entities/Address.entity';
 
 @Injectable()
 export class AddressService {
