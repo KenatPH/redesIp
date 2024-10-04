@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { WarehouseService } from './warehouse.service';
-import { Warehouse } from '../entities/Warehouse.entity';
+import { Warehouse } from 'src/entities/Warehouse.entity';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('warehouse')  // Etiqueta para Swagger

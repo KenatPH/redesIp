@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { Category } from '../entities/category.entity';
+import { Category } from 'src/entities/category.entity';
 import { CategoryService } from './categories.service';
 
 @ApiTags('categories')  // Etiqueta para Swagger
